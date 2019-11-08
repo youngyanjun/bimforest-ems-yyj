@@ -1,0 +1,56 @@
+server:
+    tomcat:
+        uri-encoding: UTF-8
+        max-threads: 1000
+        min-spare-threads: 30
+    port: 25002
+    connection-timeout: 5000ms
+
+spring:
+    datasource:
+        url: jdbc:postgresql://10.100.100.61:5432/zcloud-bi?allowMultiQueries=true
+        username: bi
+        password: bimforest-bi
+        driver-class-name: org.postgresql.Driver
+        type: com.alibaba.druid.pool.DruidDataSource
+
+        initialSize: 5
+        minIdle: 5
+        maxActive: 20
+        maxWait: 60000
+        timeBetweenEvictionRunsMillis: 60000
+        minEvictableIdleTimeMillis: 300000
+        #validationQuery: SELECT 1 FROM DUAL
+        testWhileIdle: true
+        testOnBorrow: false
+        testOnReturn: false
+        poolPreparedStatements: true
+        filters: stat,wall
+        maxPoolPreparedStatementPerConnectionSize: 20
+        useGlobalDataSourceStat: true
+        connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
+
+# 自定义文件上传路径
+web:
+    upload-path: D:/crm-doc/
+    domain: zcloudbim.com
+#微信配置
+weixin:
+    company:
+        secret: lIYdEcvOzYp1bYkGPZXWk2mjaHuzzpIddM8hwt3X8wM
+    corp:
+        id: ww580eeaa48c8df823
+    department:
+        root:
+            id: 1
+    agent:
+        id: 1000002
+#仓库地址
+warehouse:
+    url: http://gbs.zcloudbim.com:18008/Home/
+#物联网地址
+lot:
+    #    url: http://10.11.0.95:8006/api/common/
+    url: http://dev.zcloudbim.com:8006/api/
+    phone: 18621173424
+    password: 123

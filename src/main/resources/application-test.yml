@@ -1,0 +1,69 @@
+server:
+    tomcat:
+        uri-encoding: UTF-8
+        max-threads: 1000
+        min-spare-threads: 30
+    port: 8085
+    connection-timeout: 5000ms
+
+spring:
+    datasource:
+        url: jdbc:postgresql://10.11.0.189:15432/bimforest_plateform?allowMultiQueries=true
+        username: postgres
+        password: postgres
+        driver-class-name: org.postgresql.Driver
+        type: com.alibaba.druid.pool.DruidDataSource
+
+        initialSize: 5
+        minIdle: 5
+        maxActive: 20
+        maxWait: 60000
+        timeBetweenEvictionRunsMillis: 60000
+        minEvictableIdleTimeMillis: 300000
+        #validationQuery: SELECT 1 FROM DUAL
+        testWhileIdle: true
+        testOnBorrow: false
+        testOnReturn: false
+        poolPreparedStatements: true
+        filters: stat,wall
+        maxPoolPreparedStatementPerConnectionSize: 20
+        useGlobalDataSourceStat: true
+        connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
+    redis:
+        # Redis数据库索引（默认为0）
+        database: 0
+        # Redis服务器地址
+        host: 10.11.0.189
+        # Redis服务器连接端口
+        port: 6379
+        # Redis服务器连接密码（默认为空）
+        password: 123qwe
+        # 连接超时时间（毫秒）
+        timeout: 1000
+
+# 自定义文件上传路径
+web:
+    upload-path: D:/crm-doc/
+    domain: zcloudbim.com
+
+#微信配置
+weixin:
+    company:
+        secret: KFeiVyVAWSKUstRyVXg0RFJzM-GjBWuUVxkztJSaQbA
+    corp:
+        id: ww11b7977ef09b280d
+    department:
+        root:
+            id: 1064016195
+    agent:
+        id: 1000006
+#仓库地址
+warehouse:
+    url: http://www.zcloudbim.com:14008/Home/
+    #GetProjectInfoByCode: http://www.zcloudbim.com:14008/Home/GetProjectInfoByCode
+#物联网地址
+lot:
+    #    url: http://10.11.0.95:8006/api/common/
+    url: http://dev.zcloudbim.com:8006/api/
+    phone: 18621173424
+    password: 123

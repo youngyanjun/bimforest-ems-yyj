@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bimforest.ems.modules.sys.mapper.SysUserMapper">
+    <update id="updateStatus">
+        update sys_user
+        <set>
+            status = #{status}
+        </set>
+        <where>
+            id in
+            <foreach collection="list" item="id" open="(" separator="," close=")">
+                #{id}
+            </foreach>
+        </where>
+    </update>
+    <update id="updatePassword">
+        update sys_user
+        <set>
+            user_pwd = #{password}
+        </set>
+        <where>
+            id in
+            <foreach collection="list" item="id" open="(" separator="," close=")">
+                #{id}
+            </foreach>
+        </where>
+    </update>
+    <select id="selectUserList" resultType="com.bimforest.ems.modules.sys.vo.SysUserVO">
+        select user_name from sys_user where status != -1
+    </select>
+</mapper>

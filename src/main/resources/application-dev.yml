@@ -1,0 +1,80 @@
+spring:
+    datasource:
+        url: jdbc:postgresql://localhost:5432/bimforest_engineering?allowMultiQueries=true
+        #url: jdbc:postgresql://10.11.0.189:15432/zcloud-bi?allowMultiQueries=true
+        username: postgres
+        password: postgresql
+        driver-class-name: org.postgresql.Driver
+        type: com.alibaba.druid.pool.DruidDataSource
+
+        initialSize: 5
+        minIdle: 5
+        maxActive: 20
+        maxWait: 60000
+        timeBetweenEvictionRunsMillis: 60000
+        minEvictableIdleTimeMillis: 300000
+        #validationQuery: SELECT 1 FROM DUAL
+        testWhileIdle: true
+        testOnBorrow: false
+        testOnReturn: false
+        poolPreparedStatements: true
+        filters: stat,wall
+        maxPoolPreparedStatementPerConnectionSize: 20
+        useGlobalDataSourceStat: true
+        connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
+    redis:
+        # Redis数据库索引（默认为0）
+        database: 0
+        # Redis服务器地址
+        host: 10.11.0.189
+        # Redis服务器连接端口
+        port: 6379
+        # Redis服务器连接密码（默认为空）
+        password: 123qwe
+        # 连接超时时间（毫秒）
+        timeout: 1000
+    aop:
+      auto: true
+
+
+# 自定义文件上传路径
+web:
+  upload-path: D:/crm-doc/
+  domain: localhost
+
+#微信配置
+weixin:
+    company:
+        secret: KFeiVyVAWSKUstRyVXg0RFJzM-GjBWuUVxkztJSaQbA
+    corp:
+        id: ww11b7977ef09b280d
+    department:
+        root:
+            id: 1064016195
+    agent:
+        id: 1000006
+
+#第三方系统信息
+custom:
+    system:
+        product:
+            key: product
+        iot:
+            key: iot
+        purchase:
+            key: purchase
+        warehouse:
+            key: wareHouse
+#微信扫码
+scancode:
+  #仓库
+  warehouse:
+    url: http://gbs.zcloudbim.com:18008/home/IGetStockInfo
+  #物联网
+  iot:
+    #构件
+    component:
+      url: http://iot.zcloudbim.com:8006/api/common/getcomprecord
+    #流转
+    deliver:
+      url: http://iot.zcloudbim.com:8006/api/common/comphistory
